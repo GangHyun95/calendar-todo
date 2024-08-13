@@ -1,0 +1,19 @@
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.year-nav,
+.month-nav {
+    display: flex;
+    align-items: center;
+}
+
+.year-nav svg,
+.month-nav svg {
+    color: var(--color-icon);
+    cursor: pointer;
+    margin: 0 8px;
+}

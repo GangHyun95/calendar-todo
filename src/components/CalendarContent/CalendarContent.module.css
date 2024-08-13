@@ -1,0 +1,32 @@
+.calendar-content {
+    margin-top: 12px;
+    padding-bottom: 10px;
+    background-color: #fff;
+    height: 500px;
+    border-radius: 1.5rem;
+    overflow: hidden;
+}
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    height: 100%;
+}
+.calendar-header {
+    padding-top: 10px;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.calendar-day {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.today {
+    background-color: var(--color-accent);
+}
