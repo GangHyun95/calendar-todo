@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import styles from "./CalendarContent.module.css";
+import { useDate } from "../../context/DateContext";
 
 function getMonthDays(month: number, year: number) {
     const days: (number | null)[] = [];
@@ -13,13 +13,12 @@ function getMonthDays(month: number, year: number) {
     while (date.getMonth() === month) {
         days.push(date.getDate());
         date.setDate(date.getDate() + 1);
-        console.log(date);
     }
     return days;
 }
 
-function CalendarContent() {
-    const [currentDate, setCurrentDate] = useState(new Date());
+export default function CalendarContent() {
+    const { currentDate } = useDate();
     const days = getMonthDays(
         currentDate.getMonth(),
         currentDate.getFullYear()
@@ -59,5 +58,3 @@ function CalendarContent() {
         </section>
     );
 }
-
-export default CalendarContent;
