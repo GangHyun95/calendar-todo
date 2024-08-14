@@ -40,26 +40,34 @@ export default function CalendarHeader() {
     return (
         <header className={styles["calendar-header"]}>
             <nav className={styles["year-nav"]}>
-                <IoMdArrowDropleft
-                    size="22"
+                <button
+                    className={styles["btn-year"]}
                     onClick={() => handleUpdateDate(-1, "y")}
-                />
+                >
+                    <IoMdArrowDropleft />
+                </button>
                 <span>{year}</span>
-                <IoMdArrowDropright
-                    size="22"
+                <button
+                    className={styles["btn-year"]}
                     onClick={() => handleUpdateDate(1, "y")}
-                />
+                >
+                    <IoMdArrowDropright />
+                </button>
             </nav>
             <nav className={styles["month-nav"]}>
-                <IoIosArrowBack
-                    size="16"
+                <button
+                    className={styles["btn-month"]}
                     onClick={() => handleUpdateDate(-1, "m")}
-                />
-                <span>{month}</span>
-                <IoIosArrowForward
-                    size="16"
+                >
+                    <IoIosArrowBack />
+                </button>
+                <span className={styles["month-text"]}>{month}</span>
+                <button
+                    className={styles["btn-month"]}
                     onClick={() => handleUpdateDate(1, "m")}
-                />
+                >
+                    <IoIosArrowForward />
+                </button>
             </nav>
         </header>
     );

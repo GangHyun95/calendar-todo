@@ -1,7 +1,7 @@
 import styles from "./CalendarContent.module.css";
 import { useDate } from "../../context/DateContext";
 
-function getMonthDays(month: number, year: number) {
+function getMonthDays(year: number, month: number) {
     const days: (number | null)[] = [];
     const date = new Date(year, month, 1);
     const firstDayOfWeek = date.getDay();
@@ -20,8 +20,8 @@ function getMonthDays(month: number, year: number) {
 export default function CalendarContent() {
     const { currentDate } = useDate();
     const days = getMonthDays(
+        currentDate.getFullYear(),
         currentDate.getMonth(),
-        currentDate.getFullYear()
     );
     const weekdayHeaders = ["일", "월", "화", "수", "목", "금", "토"];
 

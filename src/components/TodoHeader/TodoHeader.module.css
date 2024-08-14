@@ -1,0 +1,11 @@
+.todo-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.todo-header svg {
+    color: var(--color-green);
+    font-size: 24px;
+}

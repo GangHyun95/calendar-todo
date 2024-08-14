@@ -2,7 +2,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
 }
 
 .year-nav,
@@ -11,9 +10,30 @@
     align-items: center;
 }
 
+.month-nav {
+    width: 144px;
+}
+
+.month-text {
+    flex-grow: 1;
+    text-align: center;
+}
+
 .year-nav svg,
 .month-nav svg {
     color: var(--color-icon);
-    cursor: pointer;
+}
+
+.calendar-header button {
+    display: flex;
+    align-items: center;
     margin: 0 8px;
+}
+
+.btn-year {
+    font-size: 22px;
+}
+
+.btn-month {
+    font-size: 16px;
 }

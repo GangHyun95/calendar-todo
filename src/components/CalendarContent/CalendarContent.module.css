@@ -1,8 +1,8 @@
 .calendar-content {
-    margin-top: 12px;
+    margin-top: var(--margin-content);
     padding-bottom: 10px;
     background-color: #fff;
-    height: 500px;
+    height: 550px;
     border-radius: 1.5rem;
     overflow: hidden;
 }

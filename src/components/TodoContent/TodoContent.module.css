@@ -1,0 +1,32 @@
+.todo-content {
+    position: relative;
+    background-color: var(--color-calendar-bg);
+    height: 550px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 1.5rem;
+    line-height: var(--line-height);
+    margin: 0;
+    margin-top: var(--margin-content);
+    overflow: hidden;
+}
+
+.todo-content::before {
+    content: "";
+    position: absolute;
+    top: calc(var(--line-height) * 2);
+    left: 3%;
+    right: 3%;
+    bottom: 0;
+    background-image: linear-gradient(to bottom, transparent 97%, #eaeaea 97%);
+    background-size: 100% var(--line-height);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.todo-date-label {
+    line-height: var(--line-height);
+    margin-top: calc(var(--line-height) / 2);
+    margin-bottom: calc(var(--line-height) / 2);
+}
