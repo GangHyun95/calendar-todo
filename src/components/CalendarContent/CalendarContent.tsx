@@ -18,23 +18,19 @@ function getMonthDays(year: number, month: number) {
 }
 
 export default function CalendarContent() {
-    const { currentDate } = useDate();
+    const { currentDate, setCurrentDate } = useDate();
     const days = getMonthDays(
         currentDate.getFullYear(),
         currentDate.getMonth(),
     );
     const weekdayHeaders = ["일", "월", "화", "수", "목", "금", "토"];
 
-    const today = new Date();
-    const todayDate = today.getDate();
-    const todayMonth = today.getMonth();
-    const todayYear = today.getFullYear();
-
-    // 오늘 날짜인지 확인하는 함수
-    const isToday = (day: number | null) =>
-        day === todayDate &&
-        currentDate.getMonth() === todayMonth &&
-        currentDate.getFullYear() === todayYear;
+    const handleDateClick = (day: number | null) => {
+        if (day !== null) {
+            const newDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+            setCurrentDate(newDate);
+        }
+    };
 
     return (
         <section className={styles["calendar-content"]}>
@@ -47,9 +43,8 @@ export default function CalendarContent() {
                 {days.map((day, index) => (
                     <div
                         key={index}
-                        className={`${styles["calendar-day"]} ${
-                            isToday(day) ? styles["today"] : ""
-                        }`}
+                        className={`${styles['calendar-day']} ${day === currentDate.getDate() ? styles['selected'] : ""}`}
+                        onClick={() => handleDateClick(day)}
                     >
                         {day || ""}
                     </div>

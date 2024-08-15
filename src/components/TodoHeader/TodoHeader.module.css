@@ -1,11 +1,47 @@
 .todo-header {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 8px;
+    width: 100%;
+    padding: 0px 20px;    
 }
 
 .todo-header svg {
     color: var(--color-green);
     font-size: 24px;
+}
+
+.left,
+.right {
+    flex: 1;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 3;
+    gap: 8px;
+}
+
+.right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: var(--color-icon);
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.button svg {
+    color: var(--color-icon);
+}
+.button:hover {
+    background-color: var(--color-accent);
+    transform: scale(1.05);
 }

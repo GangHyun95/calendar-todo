@@ -30,11 +30,19 @@ export default function CalendarHeader() {
     const handleUpdateDate = (value: number, type: "m" | "y") => {
         const newDate = new Date(currentDate);
         if (type === "y") {
-            newDate.setFullYear(currentDate.getFullYear() + value);
+            newDate.setFullYear(
+                currentDate.getFullYear() + value,
+                currentDate.getMonth(),
+                1
+            );
         } else if (type === "m") {
-            newDate.setMonth(currentDate.getMonth() + value);
+            newDate.setMonth(currentDate.getMonth() + value, 1);
         }
         setCurrentDate(newDate);
+    };
+
+    const handleTodayClick = () => {
+        setCurrentDate(new Date());
     };
 
     return (
@@ -53,6 +61,9 @@ export default function CalendarHeader() {
                 >
                     <IoMdArrowDropright />
                 </button>
+            </nav>
+            <nav>
+                <button className={styles["btn-today"]} onClick={handleTodayClick}>오늘</button>
             </nav>
             <nav className={styles["month-nav"]}>
                 <button

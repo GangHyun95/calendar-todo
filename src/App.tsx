@@ -8,8 +8,8 @@ function App() {
         <>
             <DateProvider>
                 <Calendar />
+                <TodoList />
             </DateProvider>
-            <TodoList/>
         </>
     );
 }
