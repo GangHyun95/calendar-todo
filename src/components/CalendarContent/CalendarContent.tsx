@@ -43,7 +43,7 @@ export default function CalendarContent() {
                 {days.map((day, index) => (
                     <div
                         key={index}
-                        className={`${styles['calendar-day']} ${day === currentDate.getDate() ? styles['selected'] : ""}`}
+                        className={`${styles['calendar-day']} ${day === currentDate.getDate() ? styles['selected'] : ""} ${day === null ? styles['null'] : ""}`}
                         onClick={() => handleDateClick(day)}
                     >
                         {day || ""}
