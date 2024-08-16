@@ -16,7 +16,11 @@
     color: var(--color-text);
 }
 
-.icon {
+.wrap {
+    display: flex;
+    gap: 8px;
+}
+.button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,13 +29,10 @@
     background-color: var(--color-grey);
     border-radius: 100%;
     transition: all 150ms ease-out;
+    color: var(--color-text);
 }
 
-.icon:hover {
+.button:hover {
     background-color: #f7f5f5;
     transform: rotate(15deg) scale(1.2);
-}
-
-.button {
-    color: var(--color-text);
 }
