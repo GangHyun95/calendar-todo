@@ -2,5 +2,5 @@ export interface TodoItem {
     id: string;
     text: string;
     completed: boolean;
-    date: String;
+    date: string;
 }

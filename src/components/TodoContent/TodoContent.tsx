@@ -1,12 +1,28 @@
+import React, { useEffect, useState } from "react";
 import { useDate } from "../../context/DateContext";
 import styles from "./TodoContent.module.css";
 import { useTodos } from "../../context/TodoContext";
 import Todo from "../todo/Todo";
 import { formatISODate } from "../../utils";
+import Modal from "../Modal/Modal";
+import ModalContent from "../ModalContent/ModalContent";
 
 export default function TodoContent() {
     const { currentDate } = useDate();
     const { todos } = useTodos();
+    const [isModalOpen, setModalOpen] = useState<boolean>(false);
+    const [activeTodoId, setActiveTodoId] = useState<string | null>(null);
+    const [modalMode, setModalMode] = useState<"mod" | "del">("mod");
+
+    const openModal = (id: string, mode: "mod" | "del") => {
+        setActiveTodoId(id);
+        setModalMode(mode);
+        setModalOpen(true);
+    };
+    const closeModal = () => {
+        setModalOpen(false);
+        setActiveTodoId(null);
+    };
 
     const formattedDate = formatISODate(currentDate);
     const dailyTodos = todos[formattedDate] || [];
@@ -27,10 +43,28 @@ export default function TodoContent() {
                 {formatDate(currentDate)}
             </p>
             {dailyTodos.length > 0 ? (
-                dailyTodos.map((todo) => <Todo key={todo.id} id={todo.id} text={todo.text} />)
+                dailyTodos.map((todo) => (
+                    <Todo
+                        key={todo.id}
+                        id={todo.id}
+                        text={todo.text}
+                        openModal={openModal}
+                    />
+                ))
             ) : (
                 <p>할 일이 없습니다.</p>
             )}
+            <Modal
+                isOpen={isModalOpen}
+                onClose={closeModal}
+                header={modalMode === "mod" ? "수정하기" : ""}
+            >
+                <ModalContent
+                    onClose={closeModal}
+                    mode={modalMode}
+                    todoId={activeTodoId}
+                />
+            </Modal>
         </div>
     );
 }

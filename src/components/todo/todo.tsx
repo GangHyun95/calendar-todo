@@ -1,14 +1,13 @@
 import styles from "./Todo.module.css";
 import { IoTrash } from "react-icons/io5";
 import { HiOutlinePencilAlt } from "react-icons/hi";
-import { useState } from "react";
-import Modal from "../Modal/Modal";
-import ModalContent from "../ModalContent/ModalContent";
 
-export default function Todo({ id, text }: { id: string; text: string }) {
-    const [isModalOpen, setModalOpen] = useState<boolean>(false);
-    const openModal = () => setModalOpen(true);
-    const closeModal = () => setModalOpen(false);
+interface TodoProps {
+    id: string;
+    text: string;
+    openModal: (id: string, mode: "mod" | "del") => void;
+}
+export default function Todo({ id, text, openModal }: TodoProps) {
     
     return (
         <li className={styles.todo}>
@@ -17,17 +16,13 @@ export default function Todo({ id, text }: { id: string; text: string }) {
                 {text}
             </label>
             <div className={styles.wrap}>
-                <button className={styles.button}>
-                    <HiOutlinePencilAlt onClick={openModal}/>
+                <button className={styles.button} onClick={() => openModal(id, "mod")}>
+                    <HiOutlinePencilAlt/>
                 </button>
-                <button className={styles.button}>
+                <button className={styles.button} onClick={() => openModal(id, "del")}>
                     <IoTrash />
                 </button>
             </div>
-
-            <Modal isOpen={isModalOpen} onClose={closeModal} header="수정하기">
-                <ModalContent onClose={closeModal} mode="mod"/>
-            </Modal>
         </li>
     );
 }

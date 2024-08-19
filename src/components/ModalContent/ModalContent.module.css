@@ -32,3 +32,16 @@
 .button-wrap button:hover {
     filter: brightness(1.1);
 }
+
+.confirmation-text {
+    text-align: center;
+}
+.task-highlight {
+    color: var(--color-icon);
+    font-weight: bold;
+}
+
+.confirmation-text hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
