@@ -1,5 +1,6 @@
 import styles from "./CalendarContent.module.css";
 import { useDate } from "../../context/DateContext";
+import { useTodos } from "../../context/TodoContext";
 
 function getMonthDays(year: number, month: number) {
     const days: (number | null)[] = [];
@@ -19,17 +20,38 @@ function getMonthDays(year: number, month: number) {
 
 export default function CalendarContent() {
     const { currentDate, setCurrentDate } = useDate();
-    const days = getMonthDays(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-    );
+    const { todos } = useTodos();
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    const days = getMonthDays(year, month);
     const weekdayHeaders = ["일", "월", "화", "수", "목", "금", "토"];
 
     const handleDateClick = (day: number | null) => {
         if (day !== null) {
-            const newDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+            const newDate = new Date(year, month, day);
             setCurrentDate(newDate);
         }
+    };
+
+    const getTodoStatusByDate = (
+        year: number,
+        month: number,
+        day: number
+    ): string => {
+        const dateKey = `${year}-${String(month + 1).padStart(2, "0")}-${String(
+            day
+        ).padStart(2, "0")}`;
+        const dayTodos = todos[dateKey] || [];
+
+        const allDone = dayTodos.every((todo) => todo.completed);
+        const anyTodo = dayTodos.length > 0;
+
+        if (anyTodo && allDone) {
+            return "done";
+        } else if (anyTodo) {
+            return "doing";
+        }
+        return "";
     };
 
     return (
@@ -40,15 +62,24 @@ export default function CalendarContent() {
                         {header}
                     </div>
                 ))}
-                {days.map((day, index) => (
-                    <div
-                        key={index}
-                        className={`${styles['calendar-day']} ${day === currentDate.getDate() ? styles['selected'] : ""} ${day === null ? styles['null'] : ""}`}
-                        onClick={() => handleDateClick(day)}
-                    >
-                        {day || ""}
-                    </div>
-                ))}
+                {days.map((day, index) => {
+                    const dayStatus = day
+                        ? getTodoStatusByDate(year, month, day)
+                        : "";
+                    return (
+                        <div
+                            key={index}
+                            className={`${styles["calendar-day"]} ${
+                                day === currentDate.getDate()
+                                    ? styles["selected"]
+                                    : ""
+                            } ${styles[dayStatus]}`}
+                            onClick={() => handleDateClick(day)}
+                        >
+                            {day || ""}
+                        </div>
+                    );
+                })}
             </div>
         </section>
     );

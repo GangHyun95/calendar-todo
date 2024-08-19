@@ -4,3 +4,8 @@ export interface TodoItem {
     completed: boolean;
     date: string;
 }
+
+
+export interface Todos {
+    [key: string]: TodoItem[];
+}

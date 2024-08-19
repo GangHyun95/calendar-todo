@@ -5,14 +5,15 @@
 }
 
 .checkbox {
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-body-bg);
 }
 
 .text {
     flex: 1 1 0%;
     margin-left: 8px;
-    font-size: 24px;
+    font-size: 20px;
     color: var(--color-text);
 }
 
@@ -35,4 +36,9 @@
 .button:hover {
     background-color: #f7f5f5;
     transform: rotate(15deg) scale(1.2);
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #aaa;
 }

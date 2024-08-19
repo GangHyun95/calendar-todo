@@ -5,11 +5,7 @@ import React, {
     useEffect,
     ReactNode,
 } from "react";
-import { TodoItem } from "../types";
-
-interface Todos {
-    [key: string]: TodoItem[];
-}
+import { TodoItem, Todos } from "../types";
 
 interface TodosContextType {
     todos: Todos;

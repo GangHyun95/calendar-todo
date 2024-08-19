@@ -47,6 +47,7 @@ export default function TodoContent() {
                     <Todo
                         key={todo.id}
                         id={todo.id}
+                        completed={todo.completed}
                         text={todo.text}
                         openModal={openModal}
                     />
