@@ -50,7 +50,6 @@ export default function ModalContent({
             });
 
             setTodos({ ...todos });
-            localStorage.setItem("todos", JSON.stringify(todos));
             onClose();
             return;
         }
@@ -106,7 +105,6 @@ export default function ModalContent({
         }
 
         setTodos(updatedTodos);
-        localStorage.setItem("todos", JSON.stringify(updatedTodos));
         setCurrentDate(new Date(taskDate));
         onClose();
     };

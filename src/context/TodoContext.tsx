@@ -15,12 +15,11 @@ interface TodosContextType {
 const TodoContext = createContext<TodosContextType | undefined>(undefined);
 
 export function TodoProvider ({ children }: { children: ReactNode }) {
-    const [todos, setTodos] = useState({});
+    const [todos, setTodos] = useState(() => JSON.parse(localStorage.getItem("todos") || "{}"));
 
     useEffect(() => {
-        const storedTodos = JSON.parse(localStorage.getItem("todos") || "{}");
-        setTodos(storedTodos);
-    }, []);
+        localStorage.setItem('todos', JSON.stringify(todos));
+    }, [todos]);
 
     return (
         <TodoContext.Provider value={{ todos, setTodos }}>

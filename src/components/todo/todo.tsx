@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTodos } from "../../context/TodoContext";
 import styles from "./Todo.module.css";
 import { IoTrash } from "react-icons/io5";
@@ -26,7 +25,6 @@ export default function Todo({ id, text, completed, openModal }: TodoProps) {
         }
 
         setTodos(updatedTodos);
-        localStorage.setItem('todos', JSON.stringify(updatedTodos));
     };
 
     return (

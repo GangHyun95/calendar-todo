@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDate } from "../../context/DateContext";
 import styles from "./TodoContent.module.css";
 import { useTodos } from "../../context/TodoContext";
-import Todo from "../todo/Todo";
 import { formatISODate } from "../../utils";
 import Modal from "../Modal/Modal";
 import ModalContent from "../ModalContent/ModalContent";
+import Todo from "../Todo/Todo";
 
 export default function TodoContent() {
     const { currentDate } = useDate();
