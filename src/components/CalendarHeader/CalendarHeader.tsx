@@ -30,11 +30,7 @@ export default function CalendarHeader() {
     const handleUpdateDate = (value: number, type: "m" | "y") => {
         const newDate = new Date(currentDate);
         if (type === "y") {
-            newDate.setFullYear(
-                currentDate.getFullYear() + value,
-                currentDate.getMonth(),
-                1
-            );
+            newDate.setFullYear(currentDate.getFullYear() + value, currentDate.getMonth(), 1);
         } else if (type === "m") {
             newDate.setMonth(currentDate.getMonth() + value, 1);
         }

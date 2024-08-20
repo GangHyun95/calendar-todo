@@ -16,7 +16,7 @@ export default function Modal({
 }: ModalProps) {
     if (!isOpen) return null;
 
-    const handleBgClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const handleBgClick = (e: React.MouseEvent<HTMLElement>) => {
         if (e.target === e.currentTarget) {
             onClose();
         }

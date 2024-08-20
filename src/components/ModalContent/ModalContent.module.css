@@ -46,3 +46,16 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.button {
+    padding: 5px 9px;
+    background-color: var(--color-icon);
+    color: var(--color-white);
+    font-weight: bold;
+    border-radius: 8px;
+    transition: filter 300ms;
+}
+
+.button:hover {
+    filter: brightness(1.1);
+}

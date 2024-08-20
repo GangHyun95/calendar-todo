@@ -33,8 +33,25 @@ export default function ModalContent({
         }
     }, [mode]);
 
-    const handleAddOrUpdateTodo = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            console.log(e);
+            if (e.code === "Escape") {
+                onClose();
+            } else if (e.code === "Enter") {
+                handleAddOrUpdateTodo();
+            }
+        };
+
+        document.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [taskText]);
+
+    const handleAddOrUpdateTodo = (e?: React.FormEvent<HTMLFormElement>) => {
+        e?.preventDefault();
 
         if (!taskText.trim().length) {
             setMode("alert");
@@ -86,22 +103,14 @@ export default function ModalContent({
             });
 
             if (oldDate !== taskDate) {
-                updatedTodos[oldDate] = updatedTodos[oldDate].filter(
-                    (todo) => todo.id !== todoId
-                );
+                updatedTodos[oldDate] = updatedTodos[oldDate].filter((todo) => todo.id !== todoId);
                 if (updatedTodos[oldDate].length === 0) {
                     delete updatedTodos[oldDate];
                 }
-                updatedTodos[taskDate] = [
-                    ...(updatedTodos[taskDate] || []),
-                    newTodo,
-                ];
+                updatedTodos[taskDate] = [...(updatedTodos[taskDate] || []), newTodo];
             }
         } else {
-            updatedTodos[taskDate] = [
-                ...(updatedTodos[taskDate] || []),
-                newTodo,
-            ];
+            updatedTodos[taskDate] = [...(updatedTodos[taskDate] || []), newTodo];
         }
 
         setTodos(updatedTodos);
@@ -112,7 +121,7 @@ export default function ModalContent({
     const renderAlertMode = () => (
         <div className={styles["confirmation-text"]}>
             <p>할 일의 텍스트를 입력해 주세요!</p>
-            <button onClick={() => setMode(initialMode)}>돌아가기</button>
+            <button className={styles.button} onClick={() => setMode(initialMode)}>돌아가기</button>
         </div>
     );
 
@@ -164,10 +173,10 @@ export default function ModalContent({
             
             {mode !== "alert" && (
                 <div className={styles["button-wrap"]}>
-                    <button>
+                    <button type="submit">
                         {mode === "add" ? "추가" : mode === "mod" ? "수정" : "삭제"}
                     </button>
-                    <button onClick={onClose}>취소</button>
+                    <button type="button" onClick={onClose}>취소</button>
                 </div>
             )}
         </form>

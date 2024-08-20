@@ -33,7 +33,7 @@ export default function CalendarContent() {
         }
     };
 
-    const getTodoStatusByDate = (
+    const getTodoStatus = (
         year: number,
         month: number,
         day: number
@@ -63,9 +63,7 @@ export default function CalendarContent() {
                     </div>
                 ))}
                 {days.map((day, index) => {
-                    const dayStatus = day
-                        ? getTodoStatusByDate(year, month, day)
-                        : "";
+                    const dayStatus = day ? getTodoStatus(year, month, day) : "";
                     return (
                         <div
                             key={index}

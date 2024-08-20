@@ -36,10 +36,12 @@
     padding: 4px 8px;
     border-radius: 4px;
     transition: background-color 0.3s, transform 0.3s;
+    gap: 4px;
 }
 
 .button svg {
     color: var(--color-icon);
+    font-size: 16px;
 }
 .button:hover {
     background-color: var(--color-accent);

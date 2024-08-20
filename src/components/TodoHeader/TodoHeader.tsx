@@ -3,6 +3,7 @@ import styles from "./TodoHeader.module.css";
 import { GiNotebook } from "react-icons/gi";
 import Modal from "../Modal/Modal";
 import ModalContent from "../ModalContent/ModalContent";
+import { FaPlusCircle } from "react-icons/fa";
 
 export default function TodoHeader() {
     const [isModalOpen, setModalOpen] = useState<boolean>(false);
@@ -18,7 +19,8 @@ export default function TodoHeader() {
             </div>
             <div className={styles.right}>
                 <button className={styles.button} onClick={openModal}>
-                    <span>New Task</span>
+                    <span>Add Task</span>
+                    <FaPlusCircle/>
                 </button>
             </div>
             <Modal isOpen={isModalOpen} onClose={closeModal} header="추가하기">

@@ -6,15 +6,16 @@ import { formatISODate } from "../../utils";
 import Modal from "../Modal/Modal";
 import ModalContent from "../ModalContent/ModalContent";
 import Todo from "../Todo/Todo";
+import { CiCirclePlus } from "react-icons/ci";
 
 export default function TodoContent() {
     const { currentDate } = useDate();
     const { todos } = useTodos();
     const [isModalOpen, setModalOpen] = useState<boolean>(false);
     const [activeTodoId, setActiveTodoId] = useState<string | null>(null);
-    const [modalMode, setModalMode] = useState<"mod" | "del">("mod");
+    const [modalMode, setModalMode] = useState<"mod" | "del" | "add">("add");
 
-    const openModal = (id: string, mode: "mod" | "del") => {
+    const openModal = (id: string | null, mode: "mod" | "del" | "add") => {
         setActiveTodoId(id);
         setModalMode(mode);
         setModalOpen(true);
@@ -54,12 +55,15 @@ export default function TodoContent() {
                         />
                     ))
                 ) : (
-                    <p>할 일이 없습니다.</p>
+                    <div className={styles['add-container']}  onClick={() => openModal(null, "add")}>
+                        <CiCirclePlus className={styles['add-icon']}/>
+                        <p className={styles['add-text']}>새로운 할 일을 추가해 주세요!</p>
+                    </div>
                 )}
                 <Modal
                     isOpen={isModalOpen}
                     onClose={closeModal}
-                    header={modalMode === "mod" ? "수정하기" : ""}
+                    header={modalMode === "add" ? "추가하기" : modalMode === "mod" ? "수정하기" : ""}
                 >
                     <ModalContent
                         onClose={closeModal}
