@@ -39,33 +39,35 @@ export default function TodoContent() {
 
     return (
         <div className={styles["todo-content"]}>
-            <p className={styles["todo-date-label"]}>
-                {formatDate(currentDate)}
-            </p>
-            {dailyTodos.length > 0 ? (
-                dailyTodos.map((todo) => (
-                    <Todo
-                        key={todo.id}
-                        id={todo.id}
-                        completed={todo.completed}
-                        text={todo.text}
-                        openModal={openModal}
-                    />
-                ))
-            ) : (
-                <p>할 일이 없습니다.</p>
-            )}
-            <Modal
-                isOpen={isModalOpen}
-                onClose={closeModal}
-                header={modalMode === "mod" ? "수정하기" : ""}
-            >
-                <ModalContent
+            <div className={styles["todo-content-inner"]}>
+                <p className={styles["todo-date-label"]}>
+                    {formatDate(currentDate)}
+                </p>
+                {dailyTodos.length > 0 ? (
+                    dailyTodos.map((todo) => (
+                        <Todo
+                            key={todo.id}
+                            id={todo.id}
+                            completed={todo.completed}
+                            text={todo.text}
+                            openModal={openModal}
+                        />
+                    ))
+                ) : (
+                    <p>할 일이 없습니다.</p>
+                )}
+                <Modal
+                    isOpen={isModalOpen}
                     onClose={closeModal}
-                    mode={modalMode}
-                    todoId={activeTodoId}
-                />
-            </Modal>
+                    header={modalMode === "mod" ? "수정하기" : ""}
+                >
+                    <ModalContent
+                        onClose={closeModal}
+                        mode={modalMode}
+                        todoId={activeTodoId}
+                    />
+                </Modal>
+            </div>
         </div>
     );
 }
