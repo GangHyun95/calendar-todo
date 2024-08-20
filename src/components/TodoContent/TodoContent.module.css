@@ -1,6 +1,6 @@
 .todo-content {
     position: relative;
-    background-color: var(--color-calendar-bg);
+    background-color: var(--color-white);
     height: 95%;
     padding-bottom: 10px;
     padding-left: 20px;
@@ -9,7 +9,12 @@
     line-height: var(--line-height);
     margin: 0;
     margin-top: var(--margin-content);
-    overflow: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.todo-content::-webkit-scrollbar {
+    display: none;
 }
 
 .todo-content::before {
@@ -19,7 +24,7 @@
     left: 3%;
     right: 3%;
     bottom: 0;
-    background-image: linear-gradient(to bottom, transparent 97%, #eaeaea 97%);
+    background-image: linear-gradient(to bottom, transparent 97%, var(--color-light-grey) 97%);
     background-size: 100% var(--line-height);
     pointer-events: none;
     z-index: 1;

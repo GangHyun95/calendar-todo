@@ -1,10 +1,11 @@
 :root {
-    --color-body-bg: #f7f5f5;
-    --color-calendar-bg: #fff;
+    --color-beige-grey: #f7f5f5;
+    --color-white: #fff;
     --color-icon: #f16e03;
     --color-accent: #ffffe0;
     --color-green: #3CB371;
     --color-grey: #d1d1d1;
+    --color-light-grey: #eaeaea;
     --color-text: #22243b;
     --margin-content: 12px;
     --line-height: 40px;
@@ -47,7 +48,7 @@ body {
     max-height: 625px;
     display: flex;
     gap: 1rem;
-    background-color: var(--color-body-bg);
+    background-color: var(--color-beige-grey);
     padding: 24px 20px;
     border-radius: 1rem;
 }

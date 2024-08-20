@@ -5,7 +5,7 @@ import React, {
     useEffect,
     ReactNode,
 } from "react";
-import { TodoItem, Todos } from "../types";
+import { Todos } from "../types";
 
 interface TodosContextType {
     todos: Todos;
@@ -15,7 +15,7 @@ interface TodosContextType {
 const TodoContext = createContext<TodosContextType | undefined>(undefined);
 
 export function TodoProvider ({ children }: { children: ReactNode }) {
-    const [todos, setTodos] = useState<Todos>({});
+    const [todos, setTodos] = useState({});
 
     useEffect(() => {
         const storedTodos = JSON.parse(localStorage.getItem("todos") || "{}");

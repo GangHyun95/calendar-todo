@@ -7,7 +7,7 @@
 .checkbox {
     width: 18px;
     height: 18px;
-    accent-color: var(--color-body-bg);
+    accent-color: var(--color-beige-grey);
 }
 
 .text {
@@ -34,11 +34,11 @@
 }
 
 .button:hover {
-    background-color: #f7f5f5;
+    background-color: var(--color-beige-grey);
     transform: rotate(15deg) scale(1.2);
 }
 
 .completed {
     text-decoration: line-through;
-    color: #aaa;
+    color: var(--color-grey);
 }

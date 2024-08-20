@@ -3,6 +3,7 @@ import styles from "./TodoHeader.module.css";
 import { GiNotebook } from "react-icons/gi";
 import Modal from "../Modal/Modal";
 import ModalContent from "../ModalContent/ModalContent";
+
 export default function TodoHeader() {
     const [isModalOpen, setModalOpen] = useState<boolean>(false);
     const openModal = () => setModalOpen(true);

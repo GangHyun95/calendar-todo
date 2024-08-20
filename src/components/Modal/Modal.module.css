@@ -13,7 +13,7 @@
 }
 
 .modal-content {
-    background-color: #fff;
+    background-color: var(--color-white);
     border-radius: 8px;
     width: 90%;
     max-width: 500px;
@@ -25,7 +25,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--color-body-bg);
+    background-color: var(--color-beige-grey);
     color: var(--color-icon);
     padding: 16px 10px;
 }
