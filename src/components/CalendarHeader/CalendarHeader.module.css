@@ -40,14 +40,13 @@
 
 .btn-today {
     padding: 4px 8px;
-    background-color: var(--color-beige-grey);
     color: var(--color-icon);
     border-radius: 5px;
     font-weight: bold;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: filter 0.3s, transform 0.3s;
 }
 
 .btn-today:hover, .btn-today:focus {
-    background-color: var(--color-accent);
-    transform: scale(1.05);
+    filter: brightness(1.4);
+    transform: scale(1.08);
 }
