@@ -9,9 +9,8 @@
     display: flex;
     align-items: center;
 }
-
 .month-nav {
-    width: 144px;
+    width: 9rem;
 }
 
 .month-text {
@@ -27,23 +26,24 @@
 .calendar-header button {
     display: flex;
     align-items: center;
-    margin: 0 8px;
+    margin: 0 0.5rem;
 }
 
 .btn-year {
-    font-size: 22px;
+    font-size: 1.25rem;
 }
 
 .btn-month {
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 .btn-today {
-    padding: 4px 8px;
+    padding: 0.25rem 0.5rem;
     color: var(--color-icon);
     border-radius: 5px;
     font-weight: bold;
     transition: filter 0.3s, transform 0.3s;
+    white-space: nowrap;
 }
 
 .btn-today:hover, .btn-today:focus {

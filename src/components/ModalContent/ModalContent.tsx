@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDate } from "../../context/DateContext";
 import { formatISODate } from "../../utils";
 import styles from "./ModalContent.module.css";
@@ -21,6 +21,7 @@ export default function ModalContent({
     const [taskText, setTaskText] = useState("");
     const [taskDate, setTaskDate] = useState(formatISODate(currentDate));
     const [mode, setMode] = useState<"add" | "mod" | "del" | "alert">(initialMode);
+    const ref = useRef<HTMLTextAreaElement>(null);
 
     useEffect(() => {
         if ((mode === "mod" || mode === "del") && todoId) {
@@ -32,6 +33,13 @@ export default function ModalContent({
             }
         }
     }, [mode]);
+
+
+    useEffect(() => {
+        if (mode === "add" || mode === "mod") {
+            ref.current?.focus();
+        }
+    }, []);
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -146,6 +154,7 @@ export default function ModalContent({
                     onChange={(e) => setTaskText(e.target.value)}
                     rows={4}
                     placeholder="할 일을 입력 해 주세요."
+                    ref={ref}
                 ></textarea>
             </div>
         </>

@@ -17,15 +17,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px;
+    gap: 0.5rem;
 }
 
 .button-wrap button {
-    padding: 10px 18px;
+    padding: 0.625rem 1.125rem;
     background-color: var(--color-icon);
     color: var(--color-white);
     font-weight: bold;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     transition: filter 300ms;
 }
 

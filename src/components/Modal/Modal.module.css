@@ -14,7 +14,7 @@
 
 .modal-content {
     background-color: var(--color-white);
-    border-radius: 8px;
+    border-radius: 0.5rem;
     width: 90%;
     max-width: 500px;
     z-index: 1001;
@@ -27,7 +27,7 @@
     justify-content: space-between;
     background-color: var(--color-beige-grey);
     color: var(--color-icon);
-    padding: 16px 10px;
+    padding: 1rem 0.625rem;
 }
 
 .modal-header h2 {
@@ -47,9 +47,9 @@
 
 .modal-header svg {
     color: var(--color-icon);
-    font-size: 32px;
+    font-size: 2rem;
 }
 
 .modal-body {
-    padding: 20px;
+    padding: 1.25rem;
 }
