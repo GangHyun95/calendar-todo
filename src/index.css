@@ -43,6 +43,7 @@ body {
     align-items: center;
 }
 #root {
+    max-width: 1800px;
     width: 90%;
     aspect-ratio: 16 / 8.3;
     display: flex;
