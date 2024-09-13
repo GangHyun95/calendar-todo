@@ -43,7 +43,6 @@ export default function ModalContent({
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
-            console.log(e);
             if (e.code === "Escape") {
                 onClose();
             } else if (e.code === "Enter") {
