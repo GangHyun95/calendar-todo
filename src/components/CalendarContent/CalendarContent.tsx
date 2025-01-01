@@ -1,6 +1,5 @@
+import { useDate, useTodos } from '../../context/GlobalContextProvider';
 import styles from "./CalendarContent.module.css";
-import { useDate } from "../../context/DateContext";
-import { useTodos } from "../../context/TodoContext";
 
 function getMonthDays(year: number, month: number) {
     const days: (number | null)[] = [];
@@ -19,7 +18,7 @@ function getMonthDays(year: number, month: number) {
 }
 
 export default function CalendarContent() {
-    const { currentDate, setCurrentDate } = useDate();
+    const { currentDate, updateCurrentDate } = useDate();
     const { todos } = useTodos();
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
@@ -29,7 +28,7 @@ export default function CalendarContent() {
     const handleDateClick = (day: number | null) => {
         if (day !== null) {
             const newDate = new Date(year, month, day);
-            setCurrentDate(newDate);
+            updateCurrentDate(newDate);
         }
     };
 

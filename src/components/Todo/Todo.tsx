@@ -1,7 +1,7 @@
-import { useTodos } from "../../context/TodoContext";
 import styles from "./Todo.module.css";
 import { IoTrash } from "react-icons/io5";
 import { HiOutlinePencilAlt } from "react-icons/hi";
+import { useTodos } from '../../context/GlobalContextProvider';
 
 interface TodoProps {
     id: string;
@@ -11,7 +11,7 @@ interface TodoProps {
 }
 
 export default function Todo({ id, text, completed, openModal }: TodoProps) {
-    const { todos, setTodos } = useTodos();
+    const { todos, updateTodos } = useTodos();
 
     const toggleCompleted = (id: string) => {
         const updatedTodos = { ...todos };
@@ -24,7 +24,7 @@ export default function Todo({ id, text, completed, openModal }: TodoProps) {
             });
         }
 
-        setTodos(updatedTodos);
+        updateTodos(updatedTodos);
     };
 
     return (

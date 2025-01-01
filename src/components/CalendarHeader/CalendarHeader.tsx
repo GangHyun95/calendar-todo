@@ -6,10 +6,10 @@ import {
 } from "react-icons/io";
 
 import styles from "./CalendarHeader.module.css";
-import { useDate } from "../../context/DateContext";
+import { useDate } from '../../context/GlobalContextProvider';
 
 export default function CalendarHeader() {
-    const { currentDate, setCurrentDate } = useDate();
+    const { currentDate, updateCurrentDate } = useDate();
     const monthNames = [
         "January",
         "February",
@@ -34,11 +34,11 @@ export default function CalendarHeader() {
         } else if (type === "m") {
             newDate.setMonth(currentDate.getMonth() + value, 1);
         }
-        setCurrentDate(newDate);
+        updateCurrentDate(newDate);
     };
 
     const handleTodayClick = () => {
-        setCurrentDate(new Date());
+        updateCurrentDate(new Date());
     };
 
     return (

@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useDate } from "../../context/DateContext";
 import { formatISODate } from "../../utils";
 import styles from "./ModalContent.module.css";
-import { useTodos } from "../../context/TodoContext";
 import { TodoItem } from "../../types";
+import { useDate, useTodos } from '../../context/GlobalContextProvider';
 
 interface ModalContentProps {
     onClose: () => void;
@@ -16,8 +15,8 @@ export default function ModalContent({
     mode: initialMode,
     todoId,
 }: ModalContentProps) {
-    const { currentDate, setCurrentDate } = useDate();
-    const { todos, setTodos } = useTodos();
+    const { currentDate, updateCurrentDate } = useDate();
+    const { todos, updateTodos } = useTodos();
     const [taskText, setTaskText] = useState("");
     const [taskDate, setTaskDate] = useState(formatISODate(currentDate));
     const [mode, setMode] = useState<"add" | "mod" | "del" | "alert">(initialMode);
@@ -73,7 +72,7 @@ export default function ModalContent({
                 }
             });
 
-            setTodos({ ...todos });
+            updateTodos({ ...todos });
             onClose();
             return;
         }
@@ -120,8 +119,8 @@ export default function ModalContent({
             updatedTodos[taskDate] = [...(updatedTodos[taskDate] || []), newTodo];
         }
 
-        setTodos(updatedTodos);
-        setCurrentDate(new Date(taskDate));
+        updateTodos(updatedTodos);
+        updateCurrentDate(new Date(taskDate));
         onClose();
     };
 

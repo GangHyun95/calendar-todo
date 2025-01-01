@@ -1,17 +1,14 @@
-import "./App.css";
-import { DateProvider } from "./context/DateContext";
-import Calendar from "./components/Calendar/Calendar";
-import TodoList from "./components/TodoList/TodoList";
-import { TodoProvider } from "./context/TodoContext";
+import './App.css';
+import { GlobalContextProvider } from './context/GlobalContextProvider';
+import Calendar from './components/Calendar/Calendar';
+import TodoList from './components/TodoList/TodoList';
 
 function App() {
     return (
-        <TodoProvider>
-            <DateProvider>
-                <Calendar />
-                <TodoList />
-            </DateProvider>
-        </TodoProvider>
+        <GlobalContextProvider>
+            <Calendar />
+            <TodoList />
+        </GlobalContextProvider>
     );
 }
 
